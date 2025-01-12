@@ -40,6 +40,7 @@ const Index = () => {
     /**
      * Gère le drag vertical : clamp entre 0 et MAX_Y
      */
+    
     const handleGestureEvent = (event: GestureEvent) => {
         const { translationY } = event.nativeEvent;
         console.log(translationY);
@@ -61,7 +62,8 @@ const Index = () => {
             console.log("stop");
         } else if (translateY.value > 30) {
             Vibration.vibrate(200); // Vibration lors de l'archivage
-            translateY.value = withSpring(290, { damping: 10, stiffness: 100 });
+            // withSpring(290, { damping: 10, stiffness: 100 });
+            translateY.value = withDelay(0, withTiming(MAX_Y, { duration: 1100 }));
         } else {
             translateY.value = withSpring(0, { damping: 10, stiffness: 100 });
         }
@@ -117,6 +119,13 @@ const Index = () => {
             Extrapolate.CLAMP
         );
 
+        const zIndex = interpolate(
+            translateY.value,
+            [0, MAX_Y],
+            [1, 5],
+            Extrapolate.CLAMP
+        );
+
         const align = translateY.value < TEXTALIGN_THRESHOLD ? 'left' : 'center';
         // On fait glisser left de -32 à 0 si on veut
         const left = interpolate(
@@ -150,6 +159,7 @@ const Index = () => {
             textAlign: align,
             top,
             right,
+            zIndex,
             // position: 'absolute',
 
         };
@@ -173,6 +183,13 @@ const Index = () => {
             Extrapolate.CLAMP
         );
 
+        const zIndex = interpolate(
+            translateY.value,
+            [0, MAX_Y],
+            [1, 4],
+            Extrapolate.CLAMP
+        );
+
         const right = interpolate(
             translateY.value,
             [0, MAX_Y],
@@ -192,7 +209,8 @@ const Index = () => {
             left,
             top,
             textAlign: align,
-            right
+            right,
+            zIndex
         };
     });
 
