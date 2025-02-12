@@ -25,8 +25,8 @@ import { router } from 'expo-router';
 const MAX_Y = 290;
 const MAX_Y_OPACITY = 270;
 const TEXTALIGN_THRESHOLD = 60;
-const SCREEN_WIDTH = Dimensions.get('window').width
-console.log(SCREEN_WIDTH);
+
+
 const Index = () => {
     const translateY = useSharedValue(0);
 
@@ -40,11 +40,9 @@ const Index = () => {
     /**
      * Gère le drag vertical : clamp entre 0 et MAX_Y
      */
-    
     const handleGestureEvent = (event: GestureEvent) => {
         const { translationY } = event.nativeEvent;
-        console.log(translationY);
-        // on clamp la valeur pour ne pas dépasser 0 ni MAX_Y
+       
         if (translationY < 0) {
             translateY.value = 0;
         } else {
@@ -56,13 +54,12 @@ const Index = () => {
      * À la fin du drag : si l'utilisateur n'est pas à la limite,
      * on revient à 0. Sinon on reste à MAX_Y.
      */
+
     const handleGestureEnd = () => {
         if (translateY.value < 2) {
             translateY.value = translateY.value = withSpring(0, { damping: 10, stiffness: 100 });
-            console.log("stop");
         } else if (translateY.value > 30) {
-            Vibration.vibrate(200); // Vibration lors de l'archivage
-            // withSpring(290, { damping: 10, stiffness: 100 });
+            Vibration.vibrate(200); 
             translateY.value = withDelay(0, withTiming(MAX_Y, { duration: 1100 }));
         } else {
             translateY.value = withSpring(0, { damping: 10, stiffness: 100 });
@@ -86,14 +83,12 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [379, 0],
-            Extrapolate.CLAMP
         );
 
         const width = interpolate(
             translateY.value,
             [0, MAX_Y],
             [320, 0],
-            Extrapolate.CLAMP
         );
 
         const opacity = translateY.value > MAX_Y_OPACITY ? 0 : 1;
@@ -116,14 +111,12 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [80, 60],
-            Extrapolate.CLAMP
         );
 
         const zIndex = interpolate(
             translateY.value,
             [0, MAX_Y],
             [1, 5],
-            Extrapolate.CLAMP
         );
 
         const align = translateY.value < TEXTALIGN_THRESHOLD ? 'left' : 'center';
@@ -132,14 +125,12 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [-32, 0],
-            Extrapolate.CLAMP
         );
 
         const right = interpolate(
             translateY.value,
             [0, MAX_Y],
             [-40, 0],
-            Extrapolate.CLAMP
         );
 
         // top peut rester le même si on ne veut pas le bouger
@@ -149,7 +140,6 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [0, 0], // pas de changement
-            Extrapolate.CLAMP
         );
 
 
@@ -171,7 +161,6 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [80, 60],
-            Extrapolate.CLAMP
         );
 
         const align = translateY.value < TEXTALIGN_THRESHOLD ? 'left' : 'center';
@@ -180,28 +169,24 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [-32, 0],
-            Extrapolate.CLAMP
         );
 
         const zIndex = interpolate(
             translateY.value,
             [0, MAX_Y],
             [1, 4],
-            Extrapolate.CLAMP
         );
 
         const right = interpolate(
             translateY.value,
             [0, MAX_Y],
             [-40, 0],
-            Extrapolate.CLAMP
         );
 
         const top = interpolate(
             translateY.value,
             [0, MAX_Y],
             [70, 0], // on peut le laisser fixe
-            Extrapolate.CLAMP
         );
 
         return {
@@ -215,33 +200,28 @@ const Index = () => {
     });
 
     const animateText3 = useAnimatedStyle(() => {
-        // Ex: fontSize 80 -> 60
         const fontSize = interpolate(
             translateY.value,
             [0, MAX_Y],
             [80, 60],
-            Extrapolate.CLAMP
         );
         const align = translateY.value < TEXTALIGN_THRESHOLD ? 'left' : 'center';
         const left = interpolate(
             translateY.value,
             [0, MAX_Y],
             [-32, 0],
-            Extrapolate.CLAMP
         );
 
         const right = interpolate(
             translateY.value,
             [0, MAX_Y],
             [-40, 0],
-            Extrapolate.CLAMP
         );
 
         const top = interpolate(
             translateY.value,
             [0, MAX_Y],
             [140, 0],
-            Extrapolate.CLAMP
         );
 
         return {
@@ -258,7 +238,6 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [70, -20],
-            Extrapolate.CLAMP
         );
 
         return {
@@ -279,7 +258,6 @@ const Index = () => {
             translateY.value,
             [0, MAX_Y],
             [1, 0],
-            Extrapolate.CLAMP
         );
 
         return {
@@ -376,8 +354,6 @@ const Index = () => {
                         <Animated.View style={[styles.checkSymbol, animatedOpacityStarbucks]}>
                             <Iconify icon='bi:check' size={102} color='white' />
                         </Animated.View>
-
-                        
                     </View>
 
                     <Animated.View style={[styles.car, animatedOpacity]}>
@@ -399,7 +375,6 @@ const Index = () => {
                         </View>
                     </Animated.View>
 
-                    {/** Bas de l'écran : Drag */}
                     <View style={styles.bottom}>
                         <PanGestureHandler
                             onGestureEvent={handleGestureEvent}
@@ -409,7 +384,6 @@ const Index = () => {
                                 <Animated.Text style={[styles.dragText, animatedOpacity]}>
                                     deslize para baixo
                                 </Animated.Text>
-                                {/** Drag button */}
                                 <Animated.View style={[styles.dragButton, animatedStyle]}>
                                     <Image source={images.drag} style={{ width: "100%", height: "100%" }} />
                                 </Animated.View>

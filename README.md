@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# Starbucks animate from figma design [figma](https://shorturl.at/9KAGL)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## 📸 Aperçu  
+<p align="center">
+  <img src="./assets/images/demo.gif" alt="" width="300"/>
+</p> 
+*Une démonstration en action !*  
 
-1. Install dependencies
+---
 
+## 🚀 Installation et exécution  
+
+1. Clonez le dépôt :  
+   ```bash
+   git https://github.com/KamadoSama/react_native_startbucks_animate.git
+   cd squid_game
+   ```  
+
+2. Installez les dépendances :  
    ```bash
    npm install
-   ```
+   ```  
 
-2. Start the app
-
+3. Lancez l'application :  
    ```bash
-    npx expo start
-   ```
+   npx expo start
+   ```  
 
-In the output, you'll find options to open the app in a
+4. Scannez le QR code avec l'application Expo Go pour tester sur un appareil mobile.  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## 🎉 Contribuer  
+Les contributions sont les bienvenues !  
+- Clonez le projet.  
+- Créez une nouvelle branche pour vos modifications.  
+- Ouvrez une pull request avec une description claire.  
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 📧 Contact  
+Pour toute question ou suggestion, vous pouvez me joindre via [LinkedIn](https://www.linkedin.com/in/gnomblehi-ben-arthur-taho-5a05121a3/).  
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Qu'en pensez-vous ? 😊
